@@ -9,9 +9,6 @@ package net.gkovalechyn.jbe.structs;
 import java.io.IOException;
 import java.io.OutputStream;
 import net.gkovalechyn.jbe.structs.attribute.AttributeInfo;
-import net.gkovalechyn.jbe.structs.CPInfo;
-import net.gkovalechyn.jbe.structs.FieldInfo;
-import net.gkovalechyn.jbe.structs.MethodInfo;
 import net.gkovalechyn.jbe.edit.Writable;
 
 /**
