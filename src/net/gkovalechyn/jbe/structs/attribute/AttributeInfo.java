@@ -16,7 +16,7 @@ import net.gkovalechyn.jbe.edit.Writable;
  */
 public abstract class AttributeInfo implements Writable{
     private final short attributeNameIndex;
-    private final int attributeLength;
+    private int attributeLength;
 
     public AttributeInfo(short attributeNameIndex, int attributeLength) {
         this.attributeNameIndex = attributeNameIndex;
@@ -40,4 +40,7 @@ public abstract class AttributeInfo implements Writable{
         return attributeLength;
     }
     
+    protected void setAttributeLength(int val){
+        this.attributeLength = val;
+    }
 }
