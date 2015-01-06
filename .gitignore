@@ -13,3 +13,4 @@ hs_err_pid*
 
 #netbeans folders
 nbproject/
+build/
