@@ -40,6 +40,9 @@ public enum CPTag {
     CONSTANT_LONG((byte) 5),
     CONSTANT_DOUBLE((byte) 6),
     CONSTANT_NAME_AND_TYPE((byte) 12),
+    
+    //firts two bytes = length
+    //next bytes = ByteArray[length]
     CONSTANT_UTF8((byte) 1),
     CONSTANT_METHOD_HANDLE((byte) 15),
     CONSTANT_METHOD_TYPE((byte) 16),
