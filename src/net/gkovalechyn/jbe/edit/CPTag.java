@@ -46,7 +46,7 @@ public enum CPTag {
     CONSTANT_UTF8((byte) 1),
     CONSTANT_METHOD_HANDLE((byte) 15),
     CONSTANT_METHOD_TYPE((byte) 16),
-    CONSTANT_FINVOKE_DYNAMIC((byte) 18);
+    CONSTANT_INVOKE_DYNAMIC((byte) 18);
 
     private CPTag(byte tag) {
         this.tag = tag;
@@ -55,5 +55,40 @@ public enum CPTag {
 
     public byte tagValue() {
         return tag;
+    }
+    
+    public static CPTag getByByte(byte tag){
+        switch(tag){
+            case 7:
+                return CPTag.CONSTANT_CLASS;
+            case 9:
+                return CPTag.CONSTANT_FIELD_REF;
+            case 10:
+                return CPTag.CONSTANT_METHOD_REF;
+            case 11:
+                return CPTag.CONSTANT_INTERFACE_METHOD_REF;
+            case 8:
+                return CPTag.CONSTANT_STRING;
+            case 3:
+                return CPTag.CONSTANT_INTEGER;
+            case 4:
+                return CPTag.CONSTANT_FLOAT;
+            case 5:
+                return CPTag.CONSTANT_LONG;
+            case 6:
+                return CPTag.CONSTANT_DOUBLE;
+            case 12:
+                return CPTag.CONSTANT_NAME_AND_TYPE;
+            case 1:
+                return CPTag.CONSTANT_UTF8;
+            case 15:
+                return CONSTANT_METHOD_HANDLE;
+            case 16:
+                return CONSTANT_METHOD_TYPE;
+            case 18:
+                return CONSTANT_INVOKE_DYNAMIC;
+            default :
+                throw new IllegalArgumentException("Unknown constant pool tag: " + tag);
+        }
     }
 }

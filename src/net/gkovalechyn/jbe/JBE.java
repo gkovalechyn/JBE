@@ -47,7 +47,7 @@ public class JBE {
             buff = new byte[1];
             in.read(buff);
             System.out.println("Tag of first CP info: " + (buff[0] & 0xFF));
-            //System.out.println("Enum: " + CPTag.);
+            System.out.println("Enum: " + CPTag.getByByte(buff[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }
