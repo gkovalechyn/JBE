@@ -47,6 +47,4 @@ public class ExceptionTable {
     public void setCatchType(short catchType) {
         this.catchType = catchType;
     }
-    
-    
 }

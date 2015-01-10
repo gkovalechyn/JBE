@@ -15,8 +15,8 @@ import net.gkovalechyn.jbe.ByteUtils;
 public class ConstantValueAttribute extends AttributeInfo{
     private final short constantValueIndex;
 
-    public ConstantValueAttribute(short constantValueIndex, short attributeNameIndex, int attributeLength) {
-        super(attributeNameIndex, attributeLength);
+    protected ConstantValueAttribute(short constantValueIndex, short attributeNameIndex) {
+        super(attributeNameIndex);
         this.constantValueIndex = constantValueIndex;
     }
 
@@ -28,6 +28,12 @@ public class ConstantValueAttribute extends AttributeInfo{
     public byte[] getInfo() {
         return ByteUtils.getBytes(constantValueIndex);
     }
+
+    @Override
+    public int getLength() {
+        return 2;
+    }
+    
     
     
     

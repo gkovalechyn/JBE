@@ -15,13 +15,11 @@ import net.gkovalechyn.jbe.edit.Writable;
  *
  * @author GKO
  */
-public class CPInfo implements Writable{
+public abstract class CPInfo implements Writable{
     private final byte tag;
-    private final byte[] info;
 
-    public CPInfo(CPTag tag, byte[] info) {
+    public CPInfo(CPTag tag) {
         this.tag = tag.tagValue();
-        this.info = info;
     }
     
     /**
@@ -32,7 +30,9 @@ public class CPInfo implements Writable{
     @Override
     public void write(OutputStream out) throws IOException{
         out.write(tag);
-        out.write(info);
+        out.write(this.getInfo());
     }
+    
+    public abstract byte[] getInfo();
     
 }

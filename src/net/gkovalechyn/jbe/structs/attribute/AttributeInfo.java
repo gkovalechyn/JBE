@@ -16,31 +16,32 @@ import net.gkovalechyn.jbe.edit.Writable;
  */
 public abstract class AttributeInfo implements Writable{
     private final short attributeNameIndex;
-    private int attributeLength;
 
-    public AttributeInfo(short attributeNameIndex, int attributeLength) {
+    public AttributeInfo(short attributeNameIndex) {
         this.attributeNameIndex = attributeNameIndex;
-        this.attributeLength = attributeLength;
     }
     
     @Override
     public void write(OutputStream out) throws IOException {
         out.write(attributeNameIndex);
-        out.write(attributeLength);
+        out.write(this.getLength());
         out.write(this.getInfo());
     }
     
+    /**This method should return all the next bytes of this attribute after the length.
+     * The length of the byte array must be equal to the length returned by the @see{getLength()} method.
+     * 
+     * @return The bytes that are to be written.
+     */
     public abstract byte[] getInfo();
 
+    /**
+     * 
+     * @return How many bytes this attribute takes
+     */
+    public abstract int getLength();
+    
     public short getAttributeNameIndex() {
         return attributeNameIndex;
-    }
-
-    public int getAttributeLength() {
-        return attributeLength;
-    }
-    
-    protected void setAttributeLength(int val){
-        this.attributeLength = val;
     }
 }
