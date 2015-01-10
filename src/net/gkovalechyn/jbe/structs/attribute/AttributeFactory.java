@@ -14,6 +14,14 @@ public class AttributeFactory {
     
     public static AttributeInfo[] createAttributes(byte[] clazz, int index, int attributeCount){
         AttributeInfo[] attributes = new AttributeInfo[attributeCount];
+        //2 bytes name index, next 4 = attribute length
+        for(int i = 0; i < attributeCount; i++){
+            AttributeInfo info = null; //create attributeInfo
+            //attributes[i] = info;
+            //index += info.getLength();
+        }
+        
+        return attributes;
     }
     
     /**
@@ -23,7 +31,7 @@ public class AttributeFactory {
      * @return An @see{AttributeInfo} representing a constant value.
      */
     private static ConstantValueAttribute createConstantValueAttribute(byte[] clazz, int index){
-        short nameIndex = (short) (((clazz[index ] & 0xFF) << 8) + (clazz[index + 1] & 0xFF));
+        short nameIndex = (short) (((clazz[index] & 0xFF) << 8) + (clazz[index + 1] & 0xFF));
         short valueIndex = (short) (((clazz[index + 6] & 0xFF) << 8) + (clazz[index + 7] & 0xFF));
         
         return new ConstantValueAttribute(valueIndex, nameIndex);

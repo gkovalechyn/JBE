@@ -131,7 +131,27 @@ public class CodeAttribute extends AttributeInfo{
         System.arraycopy(this.code, 0, tmp, index, this.codeLength);
         index += this.codeLength;
         //Exception table
-        //YOU STOPPED HERE
+        variableBytes = ByteUtils.getBytes(this.exceptionTableLength);
+        System.arraycopy(variableBytes, 0, tmp, index, variableBytes.length);
+        index += 2;
+        
+        for(ExceptionTable table : this.exceptionTable){
+            variableBytes = table.toByteArray();
+            System.arraycopy(variableBytes, 0, tmp, index, variableBytes.length);
+            index+= 8;
+        }
+        
+        //attributes
+        variableBytes = ByteUtils.getBytes(this.attributeCount);
+        System.arraycopy(variableBytes, 0, tmp, index, variableBytes.length);
+        index += 2;
+        
+        for(AttributeInfo attribute : this.attributes){
+            variableBytes = attribute.getInfo();
+            System.arraycopy(variableBytes, 0, tmp, index, variableBytes.length);
+            index += attribute.getLength();
+        }
+        
         this.info = tmp;
     }
     
